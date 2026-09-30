@@ -1,6 +1,8 @@
 package com.example.implisitintent
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +17,21 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val _btnKirimPesan = findViewById<Button>(R.id.btnKirimPesan)
+
+        _btnKirimPesan.setOnClickListener {
+            val _sendIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra("address", "081112")
+                putExtra("sms_body", "isi SMS")
+                type = "text/plain"
+            }
+
+            if (_sendIntent.resolveActivity(packageManager) != null) {
+                startActivity(Intent.createChooser(_sendIntent, "Pilih Aplikasi"))
+            }
         }
     }
 }
