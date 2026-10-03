@@ -40,4 +40,10 @@
         android:text="Buka URL"
         android:id="@+id/btnOpenURL"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Event Kalender"
+        android:id="@+id/btnSetEvent" />
+
 </LinearLayout>
